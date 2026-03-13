@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <!-- CSS de las variables -->
+    <link rel="stylesheet" href="{% static 'core/css/variables.css' %}">
+    <!-- CSS del layout -->
+    <link rel="stylesheet" href="{% static 'core/css/layout.css' %}">
+    <!-- CSS del header -->
+    <link rel="stylesheet" href="{% static 'core/css/header.css' %}">
+    <!-- CSS de la sidebar -->
+    <link rel="stylesheet" href="{% static 'core/css/sidebar.css' %}">
+    <!-- CSS del footer -->
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+    <!-- Icono de pestaña del navegador -->
+    <link rel="icon" href="{% static 'core/images/LogoNegativo2.png' %}?v=2" type="image/png">
+</head>
+
+<body>
+    <!-- SideBar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'core/images/LogoNegativoSF_R.png' %}" alt="Nexo CRM">
+        </div>
+        <ul>
+            <li>
+                <a class="primero {% if request.path == '/polizas/' or request.path|slice:':8' == '/polizas' %}activo{% endif %}" href="{% url 'polizas' %}">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Pólizas</span>
+                </a>
+            </li>
+            <li>
+                <a class="{% if request.path == '/clientes/' or request.path|slice:':9' == '/clientes' %}activo{% endif %}" href="{% url 'clientes' %}">
+                    <i class="bi bi-people"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a class="{% if request.path == '/agentes/' or request.path|slice:':9' == '/agentes' %}activo{% endif %}" href="{% url 'agentes' %}">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Agentes</span>
+                </a>
+            </li>
+            <li>
+                <a class="{% if request.path == '/aseguradoras/' or request.path|slice:':14' == '/aseguradoras' %}activo{% endif %}" href="{% url 'aseguradoras' %}">
+                    <i class="bi bi-building"></i>
+                    <span>Aseguradoras</span>
+                </a>
+            </li>
+            <li>
+                <a class="{% if request.path == '/reportes/' or request.path|slice:':9' == '/reportes' %}activo{% endif %}" href="{% url 'reportes' %}">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            {% if user.is_staff %}
+            <li>
+                <a class="{% if request.path == '/admin/' or request.path|slice:':6' == '/admin' %}activo{% endif %}" href="{% url 'admin:index' %}">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Panel de administración</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <a class="crear {% if request.path == '/crear/' or request.path|slice:':7' == '/crear' %}activo{% endif %}" href="{% url 'crear' %}">
+            <i class="bi bi-file-earmark-plus-fill"></i>
+            <span>Crear póliza</span>
+        </a>
+    </nav>
+    
+    <!-- Contenido Principal -->
+    <div id="principal" class="position-relative">
+        <!-- NavBar - CORREGIDO -->
+        <div id="superior">
+            <!-- Barra de búsqueda centrada -->
+            {% if request.path == '/polizas/' or request.path == '/clientes/' or request.path == '/agentes/' or request.path == '/aseguradoras/' or request.path == '/reportes/polizas/' or request.path == '/reportes/agentes_aseguradoras/' or request.path == '/reportes/aseguradoras_tipos/'%}
+            <div id="searchbar">
+                <form class="custom-form" method="get">
+                    <button class="custom-form__button" type="submit">
+                        <svg width="20" height="19" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                            <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" 
+                                    stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    </button>
+                    <input class="custom-form__input" placeholder="Buscar elemento" type="search" name="q" value="{{ request.GET.q }}">
+                    <button class="custom-form__reset" type="reset">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" 
+                                stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+            
+            <!-- Perfil de usuario a la derecha -->
+            <button type="button" class="btn btn-primary position-absolute top-50 end-0 translate-middle-y me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="{% static 'core/images/profile-default.png' %}" alt="Foto de perfil">
+                <span class="user-name">{{ request.user.get_full_name }}</span>
+            </button>
+        </div>
+        
+        <!-- Contenido -->
+        <div id="contenedor">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+        {% include 'core/footer.html' %}
+        </footer>
+    </div>
+    
+    <!-- Modal cerrar sesión -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cerrar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro de que desea cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a type="button" class="btn btn-primary" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'core/js/bootstrap.js' %}"></script>
+</body>
+</html>

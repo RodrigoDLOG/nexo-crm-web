@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Nexo CRM Admin{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <!-- CSS de las variables -->
+    <link rel="stylesheet" href="{% static 'core/css/variables.css' %}">
+    <!-- CSS admin -->
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/admin/admin.css' %}">
+    <!-- CSS footer -->
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/footer.css' %}">
+    <!-- Icono de pestaña del navegador -->
+    <link rel="icon" href="{% static 'core/images/LogoNegativo2.png' %}?v=2" type="image/png">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Optimizar carga de Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" rel="stylesheet">
+    <!-- Optimizar Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" display="swap">
+{% endblock %}
+
+{% block dark-mode-vars %}{% endblock %}
+
+{% block branding %}
+<div class="admin-branding">
+    <h1 id="site-name">
+        <i class="fas fa-cogs" aria-label="Configuración"></i>
+        <a href="{% url 'admin:index' %}" aria-label="Ir al inicio del panel de administración">
+            Nexo CRM
+            <span class="admin-subtitle">Sitio administrativo</span>
+        </a>
+    </h1>
+</div>
+{% endblock %}
+
+{% block welcome-msg %}
+    <div class="user-welcome" role="complementary">
+        <i class="fas fa-user-circle" aria-hidden="true"></i>
+        <span class="user-name">
+            Hola, {{ request.user.get_full_name|default:request.user.username }}
+        </span>
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'core/footer.html' %}{% endblock %}
