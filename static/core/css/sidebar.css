@@ -1,0 +1,97 @@
+nav {
+    width: var(--sidebar-width);
+    background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+}
+
+/* Logo */
+.logo-container {
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.logo-container img {
+    max-height: 150px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Links */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 5px;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    text-decoration: none;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav ul li a:hover,
+nav ul li a.activo {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid var(--accent-color);
+}
+
+nav ul li a.activo {
+    font-weight: 600;
+}
+
+nav ul li a i {
+    margin-right: 12px;
+    font-size: 22px;
+}
+
+/* Botón de crear nueva póliza */
+.crear {
+    background: linear-gradient(120deg, #2ecc71, #27ae60);
+    color: white;
+    text-decoration: none;
+    padding: 18px 25px;
+    margin: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    border: none;
+    height: auto;
+    width: auto;
+}
+
+.crear:hover {
+    color: white;
+    background: linear-gradient(120deg, #27ae60, #2ecc71);
+}
+
+.crear i {
+    margin-right: 10px;
+    font-size: 22px;
+}

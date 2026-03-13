@@ -1,0 +1,545 @@
+/* ==========================================
+                Estilos base
+========================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    display: flex;
+    min-height: 100vh;
+}
+
+a,
+button {
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+h5,
+.custom-form__input,
+nav ul li a,
+.crear,
+footer,
+.btn-primary,
+.btn-secondary,
+.table,
+.modal-body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-info:hover,
+.btn-warning:hover,
+.crear:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+            Contenido principal
+========================================== */
+#principal {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#contenedor {
+    flex: 1;
+    padding: 30px;
+    background-color: var(--light-bg);
+}
+
+#contenedorDatos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#tabla_reporte_polizas {
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+                Componentes UI
+========================================== */
+
+/* Botones */
+.btn-primary, .btn-secondary, .btn-info, .btn-warning {
+    border: none;
+}
+
+.btn-primary, .btn-secondary {
+    border-radius: 25px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+}
+
+.btn-secondary {
+    height: 44px;
+}
+
+.btn-info {
+    background: linear-gradient(120deg, #17a2b8, #138496);
+}
+
+.btn-warning {
+    background: linear-gradient(120deg, #ffc107, #e0a800);
+}
+
+.btn-sm {
+    padding: 8px 14px;
+    font-size: 15px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Cartas */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: none;
+    margin-bottom: 25px;
+}
+
+.card-header {
+    background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 18px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+}
+
+.card-body {
+    padding: 0;
+}
+
+/* Tablas */
+.table {
+    font-size: 17px;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.table thead th {
+    background-color: #e9ecef;
+    color: var(--dark-text);
+    font-weight: 600;
+    padding: 16px 12px;
+    border-bottom: 2px solid #dee2e6;
+    vertical-align: middle;
+}
+
+.table tbody td {
+    padding: 14px 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(100, 150, 230, 0.05);
+}
+
+.table td img {
+    height: 40px;
+    width: auto;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 20px;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 25px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.modal-footer {
+    padding: 20px;
+}
+
+/* ==========================================
+                Media Queries
+========================================== */
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1200px) {
+    #searchbar {
+        max-width: 400px;
+        min-width: 250px;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 992px) {
+
+    /* Sidebar Collapse */
+    nav {
+        width: 80px;
+        align-items: center;
+        padding: 0;
+    }
+
+    .logo-container {
+        padding: 20px 15px;
+        margin: 0 0 20px 0;
+    }
+
+    .logo-container img {
+        max-height: 100px;
+    }
+
+    nav ul li a {
+        padding: 15px;
+        justify-content: center;
+        border-left: none;
+        border-bottom: 4px solid transparent;
+        font-size: 0;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.activo {
+        border-left: none;
+        border-bottom: 4px solid var(--accent-color);
+    }
+
+    nav ul li a span,
+    .crear span {
+        display: none;
+    }
+
+    nav ul li a i {
+        margin-right: 0;
+        font-size: 24px;
+    }
+
+    .crear {
+        padding: 15px;
+        margin: 10px;
+        font-size: 0;
+    }
+
+    .crear i {
+        margin-right: 0;
+        font-size: 24px;
+    }
+
+    /* Layout Adjustments */
+    #principal {
+        margin-left: 80px;
+    }
+
+    #superior {
+        justify-content: flex-end;
+        gap: 15px;
+        padding: 15px;
+        left: 80px;
+        width: calc(100% - 80px);
+    }
+
+    #searchbar {
+        max-width: 300px;
+        min-width: 200px;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 768px) {
+    #superior {
+        padding: 12px 20px;
+        gap: 15px;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .btn-primary img {
+        width: 32px;
+        height: 32px;
+    }
+
+    #contenedor {
+        padding: 20px;
+    }
+
+    .card-header {
+        font-size: 18px;
+    }
+
+    #searchbar {
+        max-width: 250px;
+        min-width: 180px;
+    }
+
+    .custom-form__input {
+        font-size: 16px;
+        padding: 12px 40px 12px 15px;
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 576px) {
+    #superior {
+        padding: 10px 15px !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: 60px !important;
+        left: 80px !important;
+        width: calc(100vw - 80px) !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #searchbar {
+        max-width: 140px !important;
+        min-width: 120px !important;
+        margin-right: 8px !important;
+        order: 1;
+        flex: 0 0 auto;
+    }
+
+    .custom-form__input {
+        font-size: 14px;
+        padding: 10px 35px 10px 12px;
+    }
+
+    .btn-primary {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+        min-width: auto !important;
+        order: 2;
+    }
+
+    .btn-primary img {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .btn-primary span {
+        display: none;
+    }
+
+    /* Typography Adjustments */
+    .page-title {
+        font-size: 24px;
+    }
+
+    .page-subtitle {
+        font-size: 16px;
+    }
+
+    /* Responsive Table */
+    .table thead {
+        display: none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        width: 45%;
+        padding-right: 15px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* Footer Adjustments */
+    footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    footer #segundo {
+        text-align: center;
+    }
+}
+
+
+/* ==========================================
+                Formulario 
+========================================== */
+
+.form-container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.container-form {
+    width: 600px;
+}
+
+form:not(.custom-form) {
+    max-width: 600px;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilo para los párrafos que contienen los labels e inputs */
+form:not(.custom-form) p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los labels */
+form:not(.custom-form) label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333333;
+}
+
+/* Estilo de los inputs y select */
+form:not(.custom-form) input[type="text"],
+form:not(.custom-form) input[type="date"],
+form:not(.custom-form) input[type="number"],
+form:not(.custom-form) select {
+    padding: 12px 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Efecto al hacer focus */
+form:not(.custom-form) input[type="text"]:focus,
+form:not(.custom-form) input[type="date"]:focus,
+form:not(.custom-form) input[type="number"]:focus,
+form:not(.custom-form) select:focus {
+    border-color: #4A90E2;
+    /* azul */
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+}
+
+/* Botón de submit */
+form:not(.custom-form) .btn-crear {
+    width: 100%;
+    padding: 15px;
+    background-color: #4A90E2;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover en el botón */
+form:not(.custom-form) .btn-crear:hover {
+    background-color: #357ABD;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+}
+
+/* Contenedor de botones */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Botón de cancelar */
+.btn-cancelar {
+    padding: 12px 20px;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background-color: #c5c5c5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón de actualizar */
+.btn-actualizar {
+    padding: 12px 20px;
+    background-color: #4A90E2;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-actualizar:hover {
+    background-color: #357ABD;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}

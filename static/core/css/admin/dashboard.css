@@ -1,0 +1,45 @@
+/* DASHBOARD */
+.dashboard td, .dashboard th {
+    word-break: break-word;
+}
+
+.dashboard .module table th {
+    width: 100%;
+}
+
+.dashboard .module table td {
+    white-space: nowrap;
+}
+
+.dashboard .module table td a {
+    display: block;
+    padding-right: .6em;
+}
+
+/* RECENT ACTIONS MODULE */
+
+.module ul.actionlist {
+    margin-left: 0;
+}
+
+ul.actionlist li {
+    list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (min-width: 768px) {
+    #content {
+        padding: 20px !important;
+        /* PADDING REDUCIDO */
+        max-width: calc(100% - 290px) !important;
+        /* ANCHO MÁXIMO REDUCIDO */
+        margin: 0 290px 0 0 !important;
+        background: transparent !important;
+        width: 100% !important;
+    }
+}
+
+.quiet, a.quiet:link, a.quiet:visited {
+    color: #c4d0e8 !important;
+    font-weight: normal;
+}
