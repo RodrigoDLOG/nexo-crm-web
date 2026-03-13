@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Cliente #{{ cliente.id }}{% endblock %}
+
+{% block content %}
+    {% if modo == "editar" %}
+    <div class="form-container">
+        <div class="container-form">
+            <h1>Cliente #{{ cliente.id }}</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-buttons">
+                    <a class="btn btn-primary" href="{% url 'clientes' %}">Cancelar</a>
+                    <button class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+            {% if error %}
+                <p class="text-danger">{{ error }}</p>
+            {% endif %}
+            </div>
+    </div>
+    {% else %}
+        <h1>Cliente #{{ cliente.id }}</h1>
+        <div id="contenedorDatos">
+            <div>
+                <h2>Datos generales:</h2>
+                <p><strong>Nombre: </strong>{{ cliente.nombre }}</p>
+                <p><strong>Apellido paterno: </strong>{{ cliente.appaterno }}</p>
+                <p><strong>Apellido materno: </strong>{{ cliente.apmaterno }}</p>
+                <p><strong>Fecha de nacimiento: </strong>{{ cliente.fechanacimiento }}</p>
+                <p><strong>RFC: </strong>{{ cliente.rfc }}</p>
+                <p><strong>CURP: </strong>{{ cliente.curp }}</p>
+                <p><strong>Género: </strong>{{ cliente.generoid }}</p>
+            </div>
+            <div>
+                <h2>Datos de contacto</h2>
+                <p><strong>Celular: </strong>{{ cliente.celular }}890</p>
+                <p><strong>Teléfono: </strong>{{ cliente.telefono }}</p>
+                <p><strong>Correo: </strong>{{ cliente.correo }}</p>
+            </div>
+            <div>
+                <h2>Datos de vivienda</h2>
+                <p><strong>Código postal: </strong>{{ cliente.codigopostal }}</p>
+                <p><strong>País: </strong>{{ cliente.pais }}</p>
+                <p><strong>Estado: </strong>{{ cliente.estado }}</p>
+                <p><strong>Municipio: </strong>{{ cliente.municipio }}</p>
+                <p><strong>Ciudad: </strong>{{ cliente.ciudad }}</p>
+                <p><strong>Colonia: </strong>{{ cliente.colonia }}</p>
+                <p><strong>Calle: </strong>{{ cliente.calle }}</p>
+                <p><strong>Número de casa: </strong>{{ cliente.numcasa }}</p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
