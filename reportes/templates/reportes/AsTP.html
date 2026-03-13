@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Reporte de aseguradoras y tipos de póliza{% endblock %}
+
+{% block content %}
+<h1>Reporte de aseguradoras y tipos de póliza</h1>
+<div class="card shadow">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" colspan="3" class="table-active">Aseguradora</th>
+                <th scope="col" colspan="4" class="table-active">Tipo de póliza</th>
+                <th scope="col" rowspan="2" class="table-active">Comisión</th>
+            </tr>
+            <tr>
+                <th scope="col" class="table-active">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Imagen</th>
+                <th scope="col" class="table-active">ID</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Descrición</th>
+                <th scope="col">Imagen</th>
+            </tr>
+        </thead>
+        <tbody id="contenido">
+            {% for detalle in detalles %}
+            <tr>
+                <td class="table-active">{{ detalle.aseguradoraid.id }}</td>
+                <td>{{ detalle.aseguradoraid.nombre }}</td>
+                <td><img src="{{ detalle.aseguradoraid.imagen.url }}" alt="{{ detalle.aseguradoraid.nombre }}"></td>
+                <th scope="row" class="table-active">{{ detalle.tipopolizaid.id }}</th>
+                <td>{{ detalle.tipopolizaid.nombre }}</td>
+                <td>{{ detalle.tipopolizaid.descripcion }}</td>
+                <td><img src="{{ detalle.tipopolizaid.imagen.url }}" alt="{{ detalle.tipopolizaid.tipo }}"></td>
+                <th scope="row" class="table-active">{{ detalle.comision }}%</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

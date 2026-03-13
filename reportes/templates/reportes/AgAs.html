@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Reporte de agente y aseguradora{% endblock %}
+
+{% block content %}
+<h1>Reporte de agente y aseguradora</h1>
+<div class="card shadow">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" colspan="4" class="table-active">Agente</th>
+                <th scope="col" colspan="3" class="table-active">Aseguradora</th>
+            </tr>
+            <tr>
+                <th scope="col" class="table-active">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido paterno</th>
+                <th scope="col">Apellido materno</th>
+                <th scope="col" class="table-active">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Imagen</th>
+            </tr>
+        </thead>
+        <tbody id="contenido">
+            {% for detalle in detalles %}
+            <tr>
+                <th scope="row" class="table-active">{{ detalle.agenteid.id }}</th>
+                <td>{{ detalle.agenteid.nombre }}</td>
+                <td>{{ detalle.agenteid.apellidopaterno }}</td>
+                <td>{{ detalle.agenteid.apellidomaterno }}</td>
+                <td class="table-active">{{ detalle.aseguradoraid.id }}</td>
+                <td>{{ detalle.aseguradoraid.nombre }}</td>
+                <td><img src="{{ detalle.aseguradoraid.imagen.url }}" alt="{{ detalle.aseguradoraid.nombre }}"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

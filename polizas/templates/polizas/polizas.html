@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Pólizas - Nexo CRM{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'polizas/css/polizas.css' %}">
+
+<div class="container mt-0">
+    <div class="d-flex justify-content-between align-items-center mb-4 position-relative">
+        <h1>Pólizas</h1>
+        <button id="toggleVencidas" class="btn btn-secondary mb-2 position-absolute top-50 end-0 translate-middle-y">
+            Ocultar pólizas vencidas
+        </button>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header">
+            <h5 class="mb-0">Lista de Pólizas Registradas</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Número de Póliza</th>
+                            <th>Aseguradora</th>
+                            <th>Agente</th>
+                            <th>Cliente</th>
+                            <th>Tipo de Póliza</th>
+                            <th>Fecha de vencimiento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaPolizas">
+                        {% for poliza in polizas %}
+                        <tr>
+                            <td><strong>{{ poliza.id }}</strong></td>
+                            <td>{{ poliza.aseguradoraid }}</td>
+                            <td>{{ poliza.agenteid }}</td>
+                            <td>{{ poliza.clienteid }}</td>
+                            <td>{{ poliza.tipopolizaid }}</td>
+                            <td>{{ poliza.fechafin }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{% url 'poliza_ver' poliza.id %}" class="btn btn-info btn-sm">
+                                        <i class="bi bi-info-circle"></i> Info
+                                    </a>
+                                    <a href="{% url 'poliza_editar' poliza.id %}" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">
+                                <i class="bi bi-inbox"></i>
+                                <p class="mt-2">No hay pólizas registradas</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'polizas/js/polizas.js' %}"></script>
+{% endblock %}

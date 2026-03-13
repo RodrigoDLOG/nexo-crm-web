@@ -1,0 +1,110 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Reportes{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Reportes</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card report-card h-100">
+                <div class="card-body text-center">
+                    <div class="report-icon mb-3">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <h5 class="card-title">Reporte de Pólizas</h5>
+                    <p class="card-text">Genera reportes detallados de todas las pólizas activas, vencidas y próximas a vencer.</p>
+                    <a href="{% url 'reporte_polizas' %}" class="btn">
+                        <i class="bi bi-eye me-2"></i>Ver Reporte
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card report-card h-100">
+                <div class="card-body text-center">
+                    <div class="report-icon mb-3">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h5 class="card-title">Agente y Aseguradora</h5>
+                    <p class="card-text">Analiza el desempeño de cada agente por aseguradora y el volumen de pólizas gestionadas.</p>
+                    <a href="{% url 'reporte_AgAs' %}" class="btn">
+                        <i class="bi bi-eye me-2"></i>Ver Reporte
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card report-card h-100">
+                <div class="card-body text-center">
+                    <div class="report-icon mb-3">
+                        <i class="bi bi-bar-chart"></i>
+                    </div>
+                    <h5 class="card-title">Aseguradora y Tipo de Póliza</h5>
+                    <p class="card-text">Consulta estadísticas de pólizas por aseguradora y tipo de cobertura.</p>
+                    <a href="{% url 'reporte_AsTP' %}" class="btn">
+                        <i class="bi bi-eye me-2"></i>Ver Reporte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .report-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .card-body {
+        position: relative;
+        padding: 20px;
+    }
+    
+    .report-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .report-icon {
+        font-size: 2.5rem;
+        color: #4b6cb7;
+    }
+    
+    .card-body .btn {
+        background: linear-gradient(120deg, #4b6cb7, #182848);
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 500;
+        transition: all 0.3s;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+    }
+
+    .card-body .btn:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-title {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+    
+    .card-text {
+        color: #64748b;
+        margin-bottom: 1.5rem;
+    }
+</style>
+{% endblock %}

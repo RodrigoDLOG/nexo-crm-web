@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Reporte de pólizas{% endblock %}
+
+{% block content %}
+<div class="position-relative">
+    <h1>Reporte de pólizas</h1>
+    <button id="toggleVencidas" class="btn btn-secondary mb-2 position-absolute top-50 end-0 translate-middle-y">
+        Ocultar pólizas vencidas
+    </button>
+</div>
+
+<div class="card shadow">
+    <table id="tabla_reporte_polizas" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Número de póliza</th>
+                <th scope="col">Aseguradora</th>
+                <th scope="col">Agente</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Tipo de póliza</th>
+                <th scope="col">Forma de pago</th>
+                <th scope="col">Método de pago</th>
+                <th scope="col">Prima</th>
+                <th scope="col">Fecha de inicio</th>
+                <th scope="col">Fecha de fin</th>
+            </tr>
+        </thead>
+        <tbody id="contenido">
+            {% for poliza in polizas %}
+                <tr>
+                    <th scope="row">{{poliza.id}}</th>
+                    <td>{{poliza.aseguradoraid}}</td>
+                    <td>{{poliza.agenteid}}</td>
+                    <td>{{poliza.clienteid}}</td>
+                    <td>{{poliza.tipopolizaid}}</td>
+                    <td>{{poliza.formapagoid}}</td>
+                    <td>{{poliza.metodopagoid}}</td>
+                    <td>{{poliza.prima}}</td>
+                    <td>{{poliza.fechainicio}}</td>
+                    <td>{{poliza.fechafin}}</td>
+                </tr>    
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="{% static 'reportes/js/reportes.js' %}"></script>
+{% endblock %}

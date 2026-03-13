@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Póliza #{{ poliza.id }}{% endblock %}
+
+{% block content %}
+    {% if modo == "editar" %}
+    <div class="form-container">
+        <div class="container-form">
+            <h1>Póliza #{{ poliza.id }}</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-buttons">
+                    <a class="btn btn-primary" href="{% url 'polizas' %}">Cancelar</a>
+                    <button class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+            {% if error %}
+                <p class="text-danger">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+        <h1>Póliza #{{ poliza.id }}</h1>
+        <h2>Datos generales:</h2>
+        <div class="card shadow">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Número de póliza</th>
+                        <th scope="col">Aseguradora</th>
+                        <th scope="col">Agente</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Tipo de póliza</th>
+                        <th scope="col">Prima</th>
+                        <th scope="col">Fecha de fin</th>
+                    </tr>
+                </thead>
+                <tbody id="contenido">
+                    <tr>
+                        <th scope="row">{{ poliza.id }}</th>
+                        <td>{{ poliza.aseguradoraid }}</td>
+                        <td>{{ poliza.agenteid }}</td>
+                        <td>{{ poliza.clienteid }}</td>
+                        <td>{{ poliza.tipopolizaid }}</td>
+                        <td>{{ poliza.prima }}</td>
+                        <td>{{ poliza.fechafin }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

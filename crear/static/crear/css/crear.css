@@ -1,0 +1,135 @@
+#superior {
+    z-index: 1;
+}
+
+.contenedor-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form-row div {
+    margin: 10px 0;
+}
+
+.contenedor-imagenes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.imagen-selector {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.imagen-selector:hover {
+    transform: scale(0.95);
+    border-color: #007BFF;
+}
+
+.seleccionada {
+    border-color: #28a745;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.6);
+}
+
+.foto-aseguradora {
+    height: 200px;
+    border-radius: 10px;
+}
+
+.btn-crear {
+    background: linear-gradient(120deg, rgb(46, 204, 113), rgb(39, 174, 96));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.btn-crear:hover {
+    background: linear-gradient(120deg, rgb(39, 174, 96), rgb(46, 204, 113));
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.6);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-seleccionar {
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.btn-seleccionar:hover {
+    background: linear-gradient(120deg, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 4px 15px rgba(168, 172, 169, 0.6);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    color: white;
+}
+
+th {
+    text-align: center;
+}
+
+#searchbar {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+}
+
+table tr td:last-child,
+.imagen-centrada {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-text {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+#polizaId {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+#polizaId:hover {
+    background-color: #e9ecef;
+}

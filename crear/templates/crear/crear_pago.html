@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Ingresar datos de pago{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'crear/css/crear.css' %}">
+
+<h1>Crear nueva póliza</h1>
+<div class="card">
+    <div class="card-body p-3">
+        <h2 class="card-title">Cliente</h2>
+        <div id="contenedorDatos" class="mt-3">
+            <div>
+                <h4 class="card-subtitle mb-2 text-muted">Datos generales</h4>
+                <p><strong>Nombre: </strong>{{ cliente.nombre }}</p>
+                <p><strong>Apellido paterno: </strong>{{ cliente.appaterno }}</p>
+                <p><strong>Apellido materno: </strong>{{ cliente.apmaterno }}</p>
+                <p><strong>Fecha de nacimiento: </strong>{{ cliente.fechanacimiento }}</p>
+                <p><strong>RFC: </strong>{{ cliente.rfc }}</p>
+                <p><strong>CURP: </strong>{{ cliente.curp }}</p>
+                <p><strong>Género: </strong>{{ cliente.generoid }}</p>
+            </div>
+            <div>
+                <h4 class="card-subtitle mb-2 text-muted">Datos de contacto</h4>
+                <p><strong>Celular: </strong>{{ cliente.celular }}890</p>
+                <p><strong>Teléfono: </strong>{{ cliente.telefono }}</p>
+                <p><strong>Correo: </strong>{{ cliente.correo }}</p>
+            </div>
+            <div>
+                <h4 class="card-subtitle mb-2 text-muted">Datos de vivienda</h4>
+                <p><strong>Código postal: </strong>{{ cliente.codigopostal }}</p>
+                <p><strong>País: </strong>{{ cliente.pais }}</p>
+                <p><strong>Estado: </strong>{{ cliente.estado }}</p>
+                <p><strong>Municipio: </strong>{{ cliente.municipio }}</p>
+                <p><strong>Ciudad: </strong>{{ cliente.ciudad }}</p>
+                <p><strong>Colonia: </strong>{{ cliente.colonia }}</p>
+                <p><strong>Calle: </strong>{{ cliente.calle }}</p>
+                <p><strong>Número de casa: </strong>{{ cliente.numcasa }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body p-3">
+        <h2 class="card-title">Agente</h2>
+        <div class="mt-2">
+            <p><strong>Nombre: </strong>{{ agente.nombre}}</p>
+            <p><strong>Apellido paterno: </strong>{{ agente.apellidopaterno}}</p>
+            <p><strong>Apellido materno: </strong>{{ agente.apellidomaterno}}</p>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body p-3">
+        <h2 class="card-title">Aseguradora</h2>
+        <div class="mt-2">
+            <p><strong>Aseguradora: </strong>{{ aseguradora.nombre}}</p>
+            <p><strong>Imagen: </strong><br><img src="{{aseguradora.imagen.url}}" alt="" class="foto-aseguradora"></p>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body p-3">
+        <h2 class="card-title">Tipo de póliza</h2>
+        <div class="mt-2">
+            <p><strong>Tipo de póliza: </strong>{{ tipoPoliza.nombre}}</p>
+            <p><strong>Imagen: </strong><br><img src="{{tipoPoliza.imagen.url}}" alt="" class="foto-aseguradora"></p>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body p-3 form-container">
+        <div class="container-form">
+            <h2 class="card-title">Datos de pago</h2>
+            <div class="mt-2">
+                <form method="post" id="polizaForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id">ID:</label>
+                        <input type="text" id="polizaId" name="id" required readonly class="form-control">
+                        <small class="form-text text-muted">ID generado automáticamente</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prima">Prima base (sin comisión):</label>
+                        <input type="number" step="0.01" name="prima" required class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="formapagoid">Forma de pago:</label>
+                        <select name="formapagoid" class="form-control">
+                            {% for forma in formasPago %}
+                                <option value="{{ forma.id }}">{{ forma.forma }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="metodopagoid">Método de pago:</label>
+                        <select name="metodopagoid" class="form-control">
+                            {% for metodo in metodosPago %}
+                                <option value="{{ metodo.id }}">{{ metodo.metodo }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fechafin">Fecha de fin:</label>
+                        <input type="date" name="fechafin" required class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <p><strong>Comisión actual: {{ comision }}%</strong></p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-crear">Crear Póliza</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'crear/js/generar_id.js' %}"></script>
+{% endblock %}
